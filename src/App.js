@@ -24,7 +24,18 @@ const App = () => {
     'https://media.giphy.com/media/3o7btXIelzs8nBnznG/giphy.gif',
   ]);
 
-  const onSortEnd = ({ oldIndex, newIndex }) => setGifs(arrayMove(gifs, oldIndex, newIndex));
+  const onSortEnd = ({ oldIndex, newIndex, collection }) => {
+    switch(collection) {
+      case 'gifs':
+        setGifs(arrayMove(gifs, oldIndex, newIndex));
+        break;
+      case 'newGifs':
+        setNewGifs(arrayMove(newGifs, oldIndex, newIndex));
+        break;
+      default:
+        break;
+    }
+  }
 
   return (
     <div className="App">
@@ -36,6 +47,17 @@ const App = () => {
             index={i}
             key={gif} 
             gif={gif} 
+          />
+        )}
+      </SortableGifsContainer>
+      <h2>Set 2</h2>
+      <SortableGifsContainer axis="x" onSortEnd={onSortEnd}>
+        {newGifs.map((gif, i) => 
+          <SortableGif 
+            index={i}
+            key={gif} 
+            gif={gif} 
+            collection="newGifs"
           />
         )}
       </SortableGifsContainer>
