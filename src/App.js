@@ -17,6 +17,13 @@ const App = () => {
     'https://media.giphy.com/media/xT1XGYy9NPhWRPp4pq/giphy.gif',
   ]);
 
+  const [newGifs, setNewGifs] = useState([
+    'https://media.giphy.com/media/xiOgHgY2ceKhm46cAj/giphy.gif',
+    'https://media.giphy.com/media/3oKIPuMqYfRsyJTWfu/giphy.gif',
+    'https://media.giphy.com/media/4ZgLPakqTajjVFOVqw/giphy.gif',
+    'https://media.giphy.com/media/3o7btXIelzs8nBnznG/giphy.gif',
+  ]);
+
   const onSortEnd = ({ oldIndex, newIndex }) => setGifs(arrayMove(gifs, oldIndex, newIndex));
 
   return (
